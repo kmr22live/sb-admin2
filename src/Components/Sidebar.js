@@ -8,96 +8,30 @@ export default function Sidebar() {
     document.querySelector("body").classList.toggle("sidebar-toggled");
     document.getElementById("accordionSidebar").classList.toggle("toggled");
   }
+  function hidecomponents() {
+    document.querySelector(".collapseTwoHeading").click();
+  }
+  function hideutilities() {
+    document.querySelector(".collapseUtilities").click();
+  }
+  function hidePages() {
+    document.querySelector(".collapsedPages").click();
+  }
+  function hideothersForTwo() {
+    // document.getElementById("collapseTwo")
+    document.getElementById("collapseUtilities").classList.remove("show");
+    document.getElementById("collapsePages").classList.remove("show");
+  }
+  function hideothersForUtilities() {
+    document.getElementById("collapseTwo").classList.remove("show");
+    document.getElementById("collapsePages").classList.remove("show");
+  }
+  function hideothersForPages() {
+    document.getElementById("collapseTwo").classList.remove("show");
+    document.getElementById("collapseUtilities").classList.remove("show");
+  }
 
   return (
-    // <ul
-    //   className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
-    //   id="accordionSidebar"
-    // >
-    //   <li className="nav-item">
-    //     <a
-    //       className="nav-link collapsed"
-    //       href="#collapseTwo"
-    //       data-bs-toggle="collapse"
-    //       data-bs-target="#collapseTwo"
-    //       aria-expanded="false"
-    //     >
-    //       <i className="fas fa-fw fa-cog"></i>
-    //       <span>Components</span>
-    //     </a>
-    //     <div
-    //       id="collapseTwo"
-    //       className="collapse"
-    //       aria-labelledby="headingTwo"
-    //       data-parent="#accordionSidebar"
-    //     >
-    //       <div className="bg-white py-2 collapse-inner rounded">
-    //         <h6 className="collapse-header">Custom Components:</h6>
-    //         <a className="collapse-item">Buttons</a>
-    //         <a className="collapse-item">Cards</a>
-    //       </div>
-    //     </div>
-    //   </li>
-    //   <li className="nav-item">
-    //     <a
-    //       className="nav-link collapsed sidebarCollapse"
-    //       href="#collapseTwo"
-    //       data-bs-toggle="collapse"
-    //       // data-toggle="collapse"
-    //       data-bs-target="#collapseTwo"
-    //       aria-expanded="false"
-    //       // onClick={() => sidebarCollapse()}
-    //     >
-    //       <i className="fas fa-fw fa-cog"></i>
-    //       <span>Components</span>
-    //     </a>
-    //     <div
-    //       id="collapseTwo"
-    //       className="collapse sidebarShow"
-    //       aria-labelledby="headingTwo"
-    //       data-parent="#accordionSidebar"
-    //     >
-    //       <div className="bg-white py-2 collapse-inner rounded">
-    //         <h6 className="collapse-header">Custom Components:</h6>
-    //         <a className="collapse-item" href="www.google.com">
-    //           Buttons
-    //         </a>
-    //         <a className="collapse-item" href="www.google.com">
-    //           Cards
-    //         </a>
-    //       </div>
-    //     </div>
-    //   </li>
-    //   <p>
-    //     <a
-    //       class="btn btn-primary"
-    //       data-bs-toggle="collapse"
-    //       href="#collapseExample"
-    //       role="button"
-    //       aria-expanded="false"
-    //       aria-controls="collapseExample"
-    //     >
-    //       Link with href
-    //     </a>
-    //     <button
-    //       class="btn btn-primary"
-    //       type="button"
-    //       data-bs-toggle="collapse"
-    //       data-bs-target="#collapseExample"
-    //       aria-expanded="false"
-    //       aria-controls="collapseExample"
-    //     >
-    //       Button with data-bs-target
-    //     </button>
-    //   </p>
-    //   <div class="collapse" id="collapseExample">
-    //     <div class="card card-body">
-    //       Some placeholder content for the collapse component. This panel is
-    //       hidden by default but revealed when the user activates the relevant
-    //       trigger.
-    //     </div>
-    //   </div>
-    // </ul>
     <>
       <ul
         className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
@@ -136,12 +70,13 @@ export default function Sidebar() {
         {/* <!-- Nav Item - Pages Collapse Menu --> */}
         <li className="nav-item">
           <a
-            className="nav-link collapsed"
+            className="nav-link collapsed collapseTwoHeading"
             href="#collapseTwo"
             data-bs-toggle="collapse"
             data-toggle="collapse"
             data-bs-target="#collapseTwo"
             aria-expanded="false"
+            onClick={hideothersForTwo}
           >
             <i className="fas fa-fw fa-cog"></i>
             <span>Components</span>
@@ -154,10 +89,18 @@ export default function Sidebar() {
           >
             <div className="bg-white py-2 collapse-inner rounded">
               <h6 className="collapse-header">Custom Components:</h6>
-              <Link className="collapse-item" to="/buttons">
+              <Link
+                className="collapse-item"
+                to="/buttons"
+                onClick={hidecomponents}
+              >
                 Buttons
               </Link>
-              <Link className="collapse-item" to="/cards">
+              <Link
+                className="collapse-item"
+                to="/cards"
+                onClick={hidecomponents}
+              >
                 Cards
               </Link>
             </div>
@@ -167,13 +110,14 @@ export default function Sidebar() {
         {/* <!-- Nav Item - Utilities Collapse Menu --> */}
         <li className="nav-item">
           <a
-            className="nav-link collapsed"
+            className="nav-link collapsed collapseUtilities"
             href="#"
             data-bs-toggle="collapse"
             data-toggle="collapse"
             data-bs-target="#collapseUtilities"
             aria-expanded="false"
             aria-controls="collapseUtilities"
+            onClick={hideothersForUtilities}
           >
             <i className="fas fa-fw fa-wrench"></i>
             <span>Utilities</span>
@@ -186,16 +130,32 @@ export default function Sidebar() {
           >
             <div className="bg-white py-2 collapse-inner rounded">
               <h6 className="collapse-header">Custom Utilities:</h6>
-              <Link className="collapse-item" to="/colors">
+              <Link
+                className="collapse-item"
+                to="/colors"
+                onClick={hideutilities}
+              >
                 Colors
               </Link>
-              <Link className="collapse-item" to="/borders">
+              <Link
+                className="collapse-item"
+                to="/borders"
+                onClick={hideutilities}
+              >
                 Borders
               </Link>
-              <Link className="collapse-item" to="/animations">
+              <Link
+                className="collapse-item"
+                to="/animations"
+                onClick={hideutilities}
+              >
                 Animations
               </Link>
-              <Link className="collapse-item" to="/other">
+              <Link
+                className="collapse-item"
+                to="/other"
+                onClick={hideutilities}
+              >
                 Other
               </Link>
             </div>
@@ -211,13 +171,14 @@ export default function Sidebar() {
         {/* <!-- Nav Item - Pages Collapse Menu --> */}
         <li className="nav-item">
           <a
-            className="nav-link collapsed"
+            className="nav-link collapsed collapsedPages"
             href="#collapsePages"
             data-bs-toggle="collapse"
             data-toggle="collapse"
             data-bs-target="#collapsePages"
             aria-expanded="false"
             aria-controls="collapsePages"
+            onClick={hideothersForPages}
           >
             <i className="fas fa-fw fa-folder"></i>
             <span>Pages</span>
@@ -230,21 +191,29 @@ export default function Sidebar() {
           >
             <div className="bg-white py-2 collapse-inner rounded">
               <h6 className="collapse-header">Login Screens:</h6>
-              <Link className="collapse-item" to="/login">
+              <Link className="collapse-item" to="/login" onClick={hidePages}>
                 Login
               </Link>
-              <Link className="collapse-item" to="/register">
+              <Link
+                className="collapse-item"
+                to="/register"
+                onClick={hidePages}
+              >
                 Register
               </Link>
-              <Link className="collapse-item" to="/forgotpassword">
+              <Link
+                className="collapse-item"
+                to="/forgotpassword"
+                onClick={hidePages}
+              >
                 Forgot Password
               </Link>
               <div className="collapse-divider"></div>
               <h6 className="collapse-header">Other Pages:</h6>
-              <Link className="collapse-item" to="/page404">
+              <Link className="collapse-item" to="/page404" onClick={hidePages}>
                 404 Page
               </Link>
-              <Link className="collapse-item" to="/blank">
+              <Link className="collapse-item" to="/blank" onClick={hidePages}>
                 Blank Page
               </Link>
             </div>
