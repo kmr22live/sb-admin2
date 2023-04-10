@@ -16,6 +16,7 @@ import Register from "./Components/Register";
 import ForgotPassword from "./Components/ForgotPassword";
 import Page404 from "./Components/Page404";
 import Blank from "./Components/Blank";
+import { Navigate } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -59,6 +60,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/blank",
         element: <Blank />,
+      },
+      {
+        path: "/",
+        element: <Navigate to="/dashboard" replace={true} />,
       },
     ],
   },
