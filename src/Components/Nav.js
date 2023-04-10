@@ -363,7 +363,6 @@ export default function Nav() {
             zIndex: "3",
           }}
           onClick={scrollToTop}
-          href="#page-top"
         >
           <i className="fas fa-angle-up"></i>
         </a>
